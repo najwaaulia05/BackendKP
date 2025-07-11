@@ -7,7 +7,7 @@ const pool = mysql.createPool({
   user: 'root',
   password: 'ZiCBGLBGVEQQzdfYysRcLGRWhBWqKfUc',
   database: 'railway',
-  port: 3306,
+  port: 53800,
 });
 
 module.exports = pool.promise();  // Menyediakan koneksi pool dengan promise
