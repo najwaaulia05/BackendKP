@@ -3,7 +3,14 @@ const express = require('express');
 const db = require('../db');
 
 const app = express();
+const router = express.Router();
+
 app.use(express.json());
+
+// Ping endpoint
+router.get('/ping', (req, res) => {
+  res.send('pong');
+});
 
 // Helper function untuk query database
 const queryDatabase = async (query, params = []) => {
@@ -16,12 +23,8 @@ const queryDatabase = async (query, params = []) => {
   }
 };
 
-app.get('/ping', (req, res) => {
-  res.send('pong');
-});
-
 // Endpoint untuk restoran dengan pencarian dinamisnp
-app.get('/api/restaurants/search', async (req, res) => {
+router.get('/restaurants/search', async (req, res) => {
   const { 
     city, 
     subdistrict, 
@@ -135,5 +138,8 @@ app.get('/api/restaurants/search', async (req, res) => {
 
   res.json(results);
 });
+
+// Mount router to /api
+app.use('/api', router);
 
 module.exports = app;
