@@ -16,8 +16,12 @@ const queryDatabase = async (query, params = []) => {
   }
 };
 
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+
 // Endpoint untuk restoran dengan pencarian dinamisnp
-app.get('/restaurants/search', async (req, res) => {
+app.get('/api/restaurants/search', async (req, res) => {
   const { 
     city, 
     subdistrict, 
