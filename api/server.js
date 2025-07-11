@@ -135,7 +135,9 @@ app.get('/restaurants/search', async (req, res) => {
   res.json(results);
 });
 
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
+
+// ------------------- BIND ROUTER -------------------
+app.use('/api/server', router);
+
+// ------------------- EXPORT -------------------
+module.exports = serverless(app);
