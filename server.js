@@ -1,16 +1,8 @@
-// index.js
+// server.js
 const express = require('express');
-const db = require('../db');
-
+const db = require('./db');
 const app = express();
-const router = express.Router();
-
-app.use(express.json());
-
-// Ping endpoint
-router.get('/ping', (req, res) => {
-  res.send('pong');
-});
+const port = 3000;
 
 // Helper function untuk query database
 const queryDatabase = async (query, params = []) => {
@@ -24,7 +16,7 @@ const queryDatabase = async (query, params = []) => {
 };
 
 // Endpoint untuk restoran dengan pencarian dinamisnp
-router.get('/restaurants/search', async (req, res) => {
+app.get('/restaurants/search', async (req, res) => {
   const { 
     city, 
     subdistrict, 
@@ -139,7 +131,7 @@ router.get('/restaurants/search', async (req, res) => {
   res.json(results);
 });
 
-// Mount router to /api
-app.use('/api', router);
-
-module.exports = app;
+// Start server
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
