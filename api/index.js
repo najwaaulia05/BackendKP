@@ -136,8 +136,8 @@ router.get('/restaurants/search', async (req, res) => {
 });
 
 
-// ------------------- BIND ROUTER -------------------
-app.use('/api/server', router);
+// Pasang router di root
+app.use('/', router);
 
-// ------------------- EXPORT -------------------
+// Ekspor ke serverless
 module.exports = serverless(app);

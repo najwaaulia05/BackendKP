@@ -1,8 +1,7 @@
 {
   "name": "backend-v2",
   "version": "1.0.0",
-  "main": "api/server.js",
-  "license": "MIT",
+  "main": "api/index.js",
   "dependencies": {
     "express": "^4.21.2",
     "mysql2": "^3.11.5",
