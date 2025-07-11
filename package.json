@@ -4,7 +4,6 @@
   "main": "api/index.js",
   "dependencies": {
     "express": "^4.21.2",
-    "mysql2": "^3.11.5",
-    "serverless-http": "^3.2.0"
+    "mysql2": "^3.11.5"
   }
 }
