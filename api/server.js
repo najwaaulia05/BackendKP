@@ -1,8 +1,12 @@
 // server.js
 const express = require('express');
-const db = require('./db');
+const serverless = require('serverless-http');
+const db = require('../db');
+
 const app = express();
-const port = 3000;
+const router = express.Router();
+
+app.use(express.json());
 
 // Helper function untuk query database
 const queryDatabase = async (query, params = []) => {
