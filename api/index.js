@@ -1,11 +1,8 @@
-// server.js
+// index.js
 const express = require('express');
-const serverless = require('serverless-http');
 const db = require('../db');
 
 const app = express();
-const router = express.Router();
-
 app.use(express.json());
 
 // Helper function untuk query database
@@ -20,7 +17,7 @@ const queryDatabase = async (query, params = []) => {
 };
 
 // Endpoint untuk restoran dengan pencarian dinamisnp
-router.get('/restaurants/search', async (req, res) => {
+app.get('/restaurants/search', async (req, res) => {
   const { 
     city, 
     subdistrict, 
@@ -135,9 +132,4 @@ router.get('/restaurants/search', async (req, res) => {
   res.json(results);
 });
 
-
-// Pasang router di root
-app.use('/', router);
-
-// Ekspor ke serverless
-module.exports = serverless(app);
+module.exports = app;
