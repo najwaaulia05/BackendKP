@@ -1,13 +1,8 @@
 // db.js
-const mysql = require('mysql2');
+import { createClient } from '@supabase/supabase-js'
 
-// Setup koneksi database
-const pool = mysql.createPool({
-  host: 'crossover.proxy.rlwy.net',
-  user: 'root',
-  password: 'ZiCBGLBGVEQQzdfYysRcLGRWhBWqKfUc',
-  database: 'railway',
-  port: 53800,
-});
+// pakai URL & KEY dari Supabase Project
+const supabaseUrl = 'https://jiujogorhfadkuniedvs.supabase.co'
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY // simpan di Vercel env
 
-module.exports = pool.promise();  // Menyediakan koneksi pool dengan promise
+export const supabase = createClient(supabaseUrl, supabaseKey)
